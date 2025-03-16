@@ -14,9 +14,17 @@ __pycache__/
 *.egg-info/
 
 # Outputafbeeldingen en logs
-images/
-debug/
-logs/
+images/*
+!images/.gitkeep
+
+debug/*
+!debug/.gitkeep
+
+logs/*
+!logs/.gitkeep
+
+model/*
+!model/.gitkeep
 
 # Edge Impulse modelbestand (lokaal, kan groot zijn of privé zijn)
 model/*.eim
