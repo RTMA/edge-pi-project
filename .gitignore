@@ -1,0 +1,28 @@
+# Virtuele omgeving (pyenv of venv)
+ei_env/
+.venv/
+env/
+
+# Pyenv versiebestand
+.python-version
+
+# Python tijdelijke bestanden
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Outputafbeeldingen en logs
+images/
+debug/
+logs/
+
+# Edge Impulse modelbestand (lokaal, kan groot zijn of privé zijn)
+model/*.eim
+
+# Configuratie met inloggegevens
+config/config.ini
+
+# Editor tijdelijke bestanden
+*.swp
