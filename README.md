@@ -42,7 +42,7 @@ edge_pi_project/
 
 ### 1. Clone de repository
 ```bash
-git clone https://github.com/jouwgebruikersnaam/edge-pi-project.git
+git clone https://github.com/RTMA/edge-pi-project.git
 cd edge-pi-project
 ```
 
