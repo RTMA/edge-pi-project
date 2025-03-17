@@ -46,7 +46,7 @@ git clone https://github.com/jouwgebruikersnaam/edge-pi-project.git
 cd edge-pi-project
 ```
 
-### 2. Maak een virtuele omgeving aan (pyenv of venv)
+### 2. Maak een virtuele omgeving aan
 ```bash
 python3 -m venv ei_env
 source ei_env/bin/activate
