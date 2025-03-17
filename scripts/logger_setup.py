@@ -4,7 +4,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
 
-def setup_logger(log_dir="../logs", log_filename="detectie.log"):
+def setup_logger(log_dir="logs", log_filename="detectie.log"):
     logger = logging.getLogger("detectie_logger")
 
     if not logger.hasHandlers():
