@@ -1,7 +1,7 @@
 import os
 import time
 
-LOG_DIR = os.path.abspath("../logs")
+LOG_DIR = os.path.abspath("logs")
 LOG_FILENAME = "detectie.log"
 LOG_PATH = os.path.join(LOG_DIR, LOG_FILENAME)
 
