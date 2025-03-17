@@ -9,9 +9,9 @@ from logger_setup import setup_logger
 
 logger = setup_logger()
 
-MODEL_PATH = os.path.abspath("../model/rpi4-blokjes.eim")
-IMAGE_PATH = os.path.abspath("../images/captured_image.jpg")
-SAVE_PATH = os.path.abspath("../debug")
+MODEL_PATH = os.path.abspath("model/rpi4-blokjes.eim")
+IMAGE_PATH = os.path.abspath("images/captured_image.jpg")
+SAVE_PATH = os.path.abspath("debug")
 
 CONFIDENCE_THRESHOLD = 0.7
 
