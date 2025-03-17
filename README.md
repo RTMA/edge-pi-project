@@ -32,7 +32,6 @@ edge_pi_project/
 │   ├── logviewer.py
 │   ├── main.py
 │   ├── mqtt_handler.py
-│   ├── utils.py (optioneel)
 │   └── viewer.py
 ├── .gitignore
 ├── README.md
