@@ -58,7 +58,7 @@ def handle_detection_trigger(payload):
         logger.critical("Fout in detectieproces: %s", outer_error)
 
 if __name__ == "__main__":
-    mqtt = MQTTHandler(config_path="../config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
+    mqtt = MQTTHandler(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
     mqtt.start()
     logger.info("Systeem gestart. Wacht op MQTT-trigger...")
 
