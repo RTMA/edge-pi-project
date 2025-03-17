@@ -30,5 +30,5 @@ def capture_image(output_path: str, camera_index: int = 0) -> str:
     return output_path
 
 if __name__ == "__main__":
-    output_file = os.path.join(os.path.dirname(__file__), "../images/captured_image.jpg")
+    output_file = os.path.join(os.path.dirname(__file__), "images/captured_image.jpg")
     capture_image(output_file, camera_index=0)
