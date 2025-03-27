@@ -62,6 +62,8 @@ pip install -r requirements.txt
 cp config/config_example.ini config/config.ini
 nano config/config.ini
 ```
+Vul jouw informatie in in de config.ini
+Het is het makkelijkste als je jouw dezelfde naam geeft als dat in het project is gebruikt: `model/rpi4-blokjes.eim`
 
 ## Gebruik
 
