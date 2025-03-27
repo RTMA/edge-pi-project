@@ -1,7 +1,7 @@
 # Edge Pi Project
 
 ## Deployment Edge Impulse
-Als je jouw model getraind en getest hebt op Edge Impulse Studio kun je in het tabblad Deployment je model exporteren. Gebruik daarvoor onderstaande achitectuur. 
+Als je jouw model getraind en getest hebt in Edge Impulse Studio kun je in het tabblad Deployment je model exporteren. Gebruik daarvoor onderstaande achitectuur. 
 
 ![afbeelding](https://github.com/user-attachments/assets/1882c7b7-7f1a-4e60-947f-570e6e7920c7)
 
