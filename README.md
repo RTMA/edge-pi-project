@@ -54,6 +54,7 @@ source ei_env/bin/activate
 
 ### 3. Installeer de dependencies
 ```bash
+sudo apt install portaudio19-dev
 pip install -r requirements.txt
 ```
 
