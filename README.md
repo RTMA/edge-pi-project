@@ -76,7 +76,21 @@ Vul jouw informatie in in de config.ini
 Gebruik WinSCP of Visual Studio Remote SSH om het bestand `rpi4-model.eim` te kopieren naar je raspberry pi.
 Plaatse deze in de `edge-pi-project/model` map 
 
+#### Maak het model executable 
+Om het model te kunnen gebruiken voor detectie moet het executable zijn. Dat kunnen met onderstaande commando uitvoeren. 
+Ga naar model directory waar je net het model hebt geplaatst.
+```
+cd edge-pi-project/model
+sudo chmod +x rpi4-model.eim
+```
+
+#### Video kanaal
+Het programma is zo ingesteld dat hij videokanaal 0 als standaard video probeert. Mocht jouw USB camera op een ander kanaal zitten (`ls /dev/video*`) dan kun je dit wijzigen op regel 19 van `scripts/main.py` 
+
 ## Gebruik van het programma
+### Beeldscherm
+Om het op een raspberry pi met beelden te werken is het het makkelijkste om een beeldschem via HDMI te verbinden met je Raspberry Pi en werk rechtstreeks op de Raspberry met een toetsenbord en muis. 
+Andere optie is om via PiConnect verbinding te maken met je Raspberry en via je Laptop te werken. Voer onderstaande commandos dan uit in de PiConnect omgeving. 
 
 ### Start detectiesysteem
 ```bash
