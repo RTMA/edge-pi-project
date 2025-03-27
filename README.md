@@ -24,7 +24,7 @@ edge_pi_project/
 ├── images/                     # Tijdelijke camerabeelden
 ├── logs/                       # Logbestanden met automatische rotatie
 ├── model/
-│   └── model.eim               # Edge Impulse modelbestand
+│   └── rpi4-blokjes.eim        # Edge Impulse modelbestand
 ├── scripts/
 │   ├── camera_capture.py
 │   ├── inference.py
