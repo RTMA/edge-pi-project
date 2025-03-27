@@ -26,7 +26,7 @@ def handle_detection_trigger(payload):
 
         while retry_count < max_retries:
             try:
-                capture_image(IMAGE_PATH, camera_index=2)
+                capture_image(IMAGE_PATH, camera_index=0)
                 result = run_inference(MODEL_PATH, IMAGE_PATH, save_path=SAVE_PATH)
                 logger.info("Inference resultaat: %s", result)
 
