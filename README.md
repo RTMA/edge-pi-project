@@ -1,5 +1,10 @@
 # Edge Pi Project
 
+## Deployment Edge Impulse
+Als je jouw model getraind en getest hebt op Edge Impulse Studio kun je in het tabblad Deployment je model exporteren. Gebruik daarvoor onderstaande achitectuur. 
+![afbeelding](https://github.com/user-attachments/assets/1882c7b7-7f1a-4e60-947f-570e6e7920c7)
+Hernoem het gedownloade naar: `rpi4-blokjes.eim`
+
 ## Overzicht
 Dit project draait een objectdetectieproces op een Raspberry Pi (of Linux-systeem) met behulp van een Edge Impulse model en communiceert via MQTT. Bij elke detectie wordt een afbeelding gemaakt, geanalyseerd en het resultaat gepubliceerd. Resultaten worden opgeslagen, gelogd en visueel weergegeven.
 
@@ -64,9 +69,12 @@ cp config/config_example.ini config/config.ini
 nano config/config.ini
 ```
 Vul jouw informatie in in de config.ini
-Het is het makkelijkste als je jouw dezelfde naam geeft als dat in het project is gebruikt: `model/rpi4-blokjes.eim`
 
-## Gebruik
+#### Model overzetten naar de Pi
+Gebruik WinSCP of Visual Studio Remote SSH om het bestand `rpi4-model.eim` te kopieren naar je raspberry pi.
+Plaatse deze in de `edge-pi-project/model` map 
+
+## Gebruik van het programma
 
 ### Start detectiesysteem
 ```bash
