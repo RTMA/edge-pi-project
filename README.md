@@ -94,18 +94,21 @@ Andere optie is om via PiConnect verbinding te maken met je Raspberry en via je 
 
 ### Start detectiesysteem
 ```bash
+cd edge-pi-project
 source ei_env/bin/activate
 python scripts/main.py
 ```
 
 ### Start viewer in aparte terminal
 ```bash
+cd edge-pi-project
 source ei_env/bin/activate
 python scripts/viewer.py
 ```
 
 ### Bekijk eventueel realtime systeemlogs in aparte terminal
 ```bash
+cd edge-pi-project
 python scripts/logviewer.py
 ```
 
