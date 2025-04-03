@@ -101,9 +101,9 @@ python scripts/main.py
 
 ### Start viewer in aparte terminal
 ```bash
-cd edge-pi-project
+cd edge-pi-project/scripts
 source ei_env/bin/activate
-python scripts/viewer.py
+python viewer.py
 ```
 
 ### Bekijk eventueel realtime systeemlogs in aparte terminal
