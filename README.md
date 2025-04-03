@@ -94,15 +94,16 @@ Andere optie is om via PiConnect verbinding te maken met je Raspberry en via je 
 
 ### Start detectiesysteem
 ```bash
-cd edge-pi-project
+cd ~/edge-pi-project
 source ei_env/bin/activate
 python scripts/main.py
 ```
 
 ### Start viewer in aparte terminal
 ```bash
-cd edge-pi-project/scripts
+cd ~/edge-pi-project
 source ei_env/bin/activate
+cd scripts
 python viewer.py
 ```
 
@@ -116,7 +117,7 @@ python scripts/logviewer.py
 Bij detectie onder de confidence-drempel (0.7) wordt automatisch tot 5 keer opnieuw geprobeerd een afbeelding te maken en te analyseren. Indien nog steeds geen betrouwbare detectie → label `'onbekend'`. Aan te passen in main.py
 
 ## Opruimen van oude afbeeldingen
-Afbeeldingen worden opgeslagen in `debug/`. Voeg een cleanup-script of cronjob toe om bestanden ouder dan 7 dagen automatisch te verwijderen.
+Afbeeldingen worden opgeslagen in `debug/`. 
 
 ## Logbestanden
 Alle systeemactiviteiten worden gelogd in:
