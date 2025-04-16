@@ -113,6 +113,19 @@ cd edge-pi-project
 python scripts/logviewer.py
 ```
 
+## Troubleshooten
+Als je de error: `Could not find the QT platform plugin 'wayland' ... ` krijgt. Kun je dit oplossen door onderstaande code onder de imports in viewer.py toe te voegen.
+```
+import os
+os.environ["QT_QPA_PLATFORM"] = "xcb"
+
+```
+
+```
+cd ~/~/edge-pi-project/scripts
+nano viewer.py
+```
+
 ## Retry-structuur
 Bij detectie onder de confidence-drempel (0.7) wordt automatisch tot 5 keer opnieuw geprobeerd een afbeelding te maken en te analyseren. Indien nog steeds geen betrouwbare detectie → label `'onbekend'`. Aan te passen in main.py
 
