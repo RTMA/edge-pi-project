@@ -115,7 +115,7 @@ python scripts/logviewer.py
 
 ## Troubleshooten
 Als je de error: `Could not find the QT platform plugin 'wayland' ... ` krijgt. Kun je dit oplossen door onderstaande code onder de imports in viewer.py toe te voegen.
-```
+```python
 import os
 os.environ["QT_QPA_PLATFORM"] = "xcb"
 
