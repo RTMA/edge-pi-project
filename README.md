@@ -80,7 +80,7 @@ Plaatse deze in de `edge-pi-project/model` map
 Om het model te kunnen gebruiken voor detectie moet het executable zijn. Dat kunnen met onderstaande commando uitvoeren. 
 Ga naar model directory waar je net het model hebt geplaatst.
 ```
-model
+cd model
 sudo chmod +x rpi4-blokjes.eim
 ```
 
