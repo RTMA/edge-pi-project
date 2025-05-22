@@ -6,6 +6,8 @@ from camera_capture import capture_image
 from inference import run_inference
 from mqtt_handler import MQTTHandler
 from logger_setup import setup_logger
+from rabbit_handler import Rabbit
+from configparser import ConfigParser
 
 logger = setup_logger()
 
@@ -58,8 +60,13 @@ def handle_detection_trigger(payload):
         logger.critical("Fout in detectieproces: %s", outer_error)
 
 if __name__ == "__main__":
+    config = ConfigParser()
+    config.read("config/config.ini")
     mqtt = MQTTHandler(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
-    mqtt.start()
+    rabbit = Rabbit(config_path="config/config.ini", trigger=handle_detection_trigger)
+    if(config["RABBITMQ"]["enabled"] == "true"):
+        rabbit.start()
+        logger.info("RabbitMQ gestart. Wacht op berichten...")
     logger.info("Systeem gestart. Wacht op MQTT-trigger...")
 
     try:
