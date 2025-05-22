@@ -57,7 +57,7 @@ class Rabbit:
         )
         self._channel = self._connection.channel()
         
-    def declare_exange(self, exchange_name, exchange_type='topic'):
+    def declare_exchange(self, exchange_name, exchange_type='topic'):
         if not self._channel:
             raise ValueError("Channel is not initialized. Call setup() first.")
         
