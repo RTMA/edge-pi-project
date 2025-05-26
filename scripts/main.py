@@ -63,10 +63,12 @@ if __name__ == "__main__":
     config = ConfigParser()
     config.read("config/config.ini")
     mqtt = MQTTHandler(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
-    rabbit = Rabbit(config_path="config/config.ini", trigger=handle_detection_trigger)
+    rabbit = Rabbit(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
     if(config["RABBITMQ"]["enabled"] == "true"):
-        rabbit.start()
+        rabbit.loop()
         logger.info("RabbitMQ gestart. Wacht op berichten...")
+    else:
+        mqtt.start()
     logger.info("Systeem gestart. Wacht op MQTT-trigger...")
 
     try:
