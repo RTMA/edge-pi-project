@@ -57,7 +57,7 @@ def handle_detection_trigger(payload):
         
         
         if rabbitEnable:
-            rabbit.publish("Detectie", f"b.{band_nummer}", json.dumps(result))
+            rabbit.publish("Detectie", f"band.{band_nummer}", json.dumps(result))
         else:
             mqtt.publish_detectie_resultaat(label)
 
