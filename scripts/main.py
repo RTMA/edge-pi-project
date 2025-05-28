@@ -72,9 +72,10 @@ if __name__ == "__main__":
     band_nummer = config.getint("RABBITMQ", "band_nummer", fallback=10)
     if(rabbitEnable):
         rabbit.setup()
+        qu = f"Detectie_resultaat_band_{band_nummer}"
         rabbit.declare_exchange("Detectie")
-        rabbit.declare_queue("Detectie_resultaat")
-        rabbit.bind_queue("Detectie_resultaat", "Detectie", routing_key="#")
+        rabbit.declare_queue(qu)
+        rabbit.bind_queue(qu, "Detectie", routing_key=f"b.{band_nummer}")
         rabbit.loop()
         logger.info("RabbitMQ gestart. Wacht op berichten...")
     else:
