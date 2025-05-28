@@ -70,7 +70,7 @@ if __name__ == "__main__":
     rabbit = Rabbit(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
     rabbitEnable = config.get("RABBITMQ", "enabled", fallback="false").lower() == "true"
     band_nummer = config.getint("RABBITMQ", "band_nummer", fallback=10)
-    if(rabbitEnable == "true"):
+    if(rabbitEnable):
         rabbit.setup()
         rabbit.declare_exchange("Detectie")
         rabbit.declare_queue("Detectie_resultaat")
