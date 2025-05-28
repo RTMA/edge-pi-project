@@ -77,7 +77,7 @@ if __name__ == "__main__":
         rabbit.declare_exchange("Detectie")
         rabbit.declare_queue(qu)
         rabbit.bind_queue(qu, "Detectie", routing_key=f"band.{band_nummer}")
-        rabbit.loop(band_nummer)
+        rabbit.loop()
         logger.info("RabbitMQ gestart. Wacht op berichten...")
     else:
         mqtt.start()

@@ -148,14 +148,14 @@ class Rabbit:
         if self._on_trigger:
             self._on_trigger(msg)
             
-    def loop(self, band_nummer:int=None):
+    def loop(self):
         try:
             self.setup()
             self.declare_exchange('Banden')
-            self.declare_queue(f'band_detectie_band_{band_nummer}')
-            self.bind_queue(f'band_detectie_band_{band_nummer}', 'Banden', f'band.{self._band_nummer}')
+            self.declare_queue(f'band_detectie_band_{self._band_nummer}')
+            self.bind_queue(f'band_detectie_band_{self._band_nummer}', 'Banden', f'band.{self._band_nummer}')
             
-            self.consume(f'band_detectie_band_{band_nummer}', self.callback)
+            self.consume(f'band_detectie_band_{self._band_nummer}', self.callback)
             self.start_consuming()
         except KeyboardInterrupt:
             self._logger.info("Exiting...")
