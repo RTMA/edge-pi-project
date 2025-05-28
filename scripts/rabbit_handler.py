@@ -166,5 +166,5 @@ class Rabbit:
             self._logger.error("Channel is not initialized. Call setup() first.")
             raise ValueError("Channel is not initialized. Call setup() first.")
         
-        routing_key = f"detectie.{self._band_nummer}"
+        routing_key = f"detectie.b{self._band_nummer}"
         self.publish('Detectie', routing_key, label)
