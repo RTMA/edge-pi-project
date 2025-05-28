@@ -74,7 +74,7 @@ if __name__ == "__main__":
         rabbit.setup()
         rabbit.declare_exchange("Detectie")
         rabbit.declare_queue("Detectie_resultaat")
-        rabbit.bind_queue("Detectie_resultaat", "Detectie", routing_key="*")
+        rabbit.bind_queue("Detectie_resultaat", "Detectie", routing_key="#")
         rabbit.loop()
         logger.info("RabbitMQ gestart. Wacht op berichten...")
     else:
