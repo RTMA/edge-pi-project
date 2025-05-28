@@ -18,7 +18,7 @@ SAVE_PATH = os.path.abspath("debug")
 CONFIDENCE_THRESHOLD = 0.7
 
 def handle_detection_trigger(payload):
-    logger.info("MQTT-trigger ontvangen: %s", payload)
+    logger.info("trigger ontvangen: %s", payload)
 
     try:
         max_retries = 5
@@ -53,8 +53,12 @@ def handle_detection_trigger(payload):
         if confidence < CONFIDENCE_THRESHOLD:
             logger.warning("Geen betrouwbare detectie na %d pogingen, label = 'onbekend'", max_retries)
             label = "onbekend"
-
-        mqtt.publish_detectie_resultaat(label)
+        
+        
+        if rabbitEnable:
+            rabbit.publish("Detectie", f"b.{band_nummer}", result)
+        else:
+            mqtt.publish_detectie_resultaat(label)
 
     except Exception as outer_error:
         logger.critical("Fout in detectieproces: %s", outer_error)
@@ -64,7 +68,13 @@ if __name__ == "__main__":
     config.read("config/config.ini")
     mqtt = MQTTHandler(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
     rabbit = Rabbit(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
-    if(config["RABBITMQ"]["enabled"] == "true"):
+    rabbitEnable = config.getboolean("RABBITMQ", "enabled", fallback=False)
+    band_nummer = config.getint("RABBITMQ", "band_nummer", fallback=10)
+    if(rabbitEnable == "true"):
+        rabbit.setup()
+        rabbit.declare_exchange("Detectie")
+        rabbit.declare_queue("Detectie_resultaat")
+        rabbit.bind_queue("Detectie_resultaat", "Detectie", routing_key="*")
         rabbit.loop()
         logger.info("RabbitMQ gestart. Wacht op berichten...")
     else:
