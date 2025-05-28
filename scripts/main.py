@@ -8,6 +8,7 @@ from mqtt_handler import MQTTHandler
 from logger_setup import setup_logger
 from rabbit_handler import Rabbit
 from configparser import ConfigParser
+import json
 
 logger = setup_logger()
 
@@ -56,7 +57,7 @@ def handle_detection_trigger(payload):
         
         
         if rabbitEnable:
-            rabbit.publish("Detectie", f"b.{band_nummer}", result)
+            rabbit.publish("Detectie", f"b.{band_nummer}", json.dumps(result))
         else:
             mqtt.publish_detectie_resultaat(label)
 
