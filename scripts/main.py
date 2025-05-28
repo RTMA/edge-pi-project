@@ -68,7 +68,7 @@ if __name__ == "__main__":
     config.read("config/config.ini")
     mqtt = MQTTHandler(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
     rabbit = Rabbit(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
-    rabbitEnable = config.getboolean("RABBITMQ", "enabled", fallback=False)
+    rabbitEnable = config.get("RABBITMQ", "enabled", fallback="false").lower() == "true"
     band_nummer = config.getint("RABBITMQ", "band_nummer", fallback=10)
     if(rabbitEnable == "true"):
         rabbit.setup()
