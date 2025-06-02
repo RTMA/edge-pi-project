@@ -1,6 +1,7 @@
 # scripts/main.py
 
 import os
+import sys
 import time
 from camera_capture import capture_image
 from inference import run_inference
@@ -29,7 +30,7 @@ def handle_detection_trigger(payload):
 
         while retry_count < max_retries:
             try:
-                capture_image(IMAGE_PATH, camera_index=0)
+                capture_image(IMAGE_PATH, camera_index=sys.argv[1] if len(sys.argv) > 1 else 0)
                 result = run_inference(MODEL_PATH, IMAGE_PATH, save_path=SAVE_PATH)
                 logger.info("Inference resultaat: %s", result)
 
