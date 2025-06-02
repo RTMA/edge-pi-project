@@ -6,6 +6,9 @@ from camera_capture import capture_image
 from inference import run_inference
 from mqtt_handler import MQTTHandler
 from logger_setup import setup_logger
+from rabbit_handler import Rabbit
+from configparser import ConfigParser
+import json
 
 logger = setup_logger()
 
@@ -16,7 +19,7 @@ SAVE_PATH = os.path.abspath("debug")
 CONFIDENCE_THRESHOLD = 0.7
 
 def handle_detection_trigger(payload):
-    logger.info("MQTT-trigger ontvangen: %s", payload)
+    logger.info("trigger ontvangen: %s", payload)
 
     try:
         max_retries = 5
@@ -51,15 +54,33 @@ def handle_detection_trigger(payload):
         if confidence < CONFIDENCE_THRESHOLD:
             logger.warning("Geen betrouwbare detectie na %d pogingen, label = 'onbekend'", max_retries)
             label = "onbekend"
-
-        mqtt.publish_detectie_resultaat(label)
+        
+        
+        if rabbitEnable:
+            rabbit.publish("Detectie", f"band.{band_nummer}", json.dumps(result))
+        else:
+            mqtt.publish_detectie_resultaat(label)
 
     except Exception as outer_error:
         logger.critical("Fout in detectieproces: %s", outer_error)
 
 if __name__ == "__main__":
+    config = ConfigParser()
+    config.read("config/config.ini")
     mqtt = MQTTHandler(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
-    mqtt.start()
+    rabbit = Rabbit(config_path="config/config.ini", on_trigger=handle_detection_trigger, logger=logger)
+    rabbitEnable = config.get("RABBITMQ", "enabled", fallback="false").lower() == "true"
+    band_nummer = config.getint("RABBITMQ", "band_nummer", fallback=10)
+    if(rabbitEnable):
+        rabbit.setup()
+        qu = f"Detectie_resultaat_band_{band_nummer}"
+        rabbit.declare_exchange("Detectie")
+        rabbit.declare_queue(qu)
+        rabbit.bind_queue(qu, "Detectie", routing_key=f"band.{band_nummer}")
+        rabbit.loop()
+        logger.info("RabbitMQ gestart. Wacht op berichten...")
+    else:
+        mqtt.start()
     logger.info("Systeem gestart. Wacht op MQTT-trigger...")
 
     try:
